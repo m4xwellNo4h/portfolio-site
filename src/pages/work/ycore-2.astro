@@ -1,0 +1,64 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const S3 = 'https://wf1.s3.us-east-2.amazonaws.com';
+---
+
+<ProjectLayout
+  title="Illustrating Cybersecurity"
+  subtitle="Gladius Cybersecurity [2019]"
+  description="Demonstrating decentralized CDN and DDoS protection on the Ethereum blockchain. The project translates abstract, technical concepts in distributed network security into a clear, interactive visual experience for a non-technical audience."
+  role="Product Designer"
+  team="Gladius Cybersecurity"
+  duration="2019"
+  backHref="/digital-work"
+  backLabel="Digital Work"
+>
+
+  <div class="media-full">
+    <video autoplay muted loop playsinline>
+      <source src={`${S3}/ycore_mobile_search.mp4`} type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="project-body">
+    <div class="project-section">
+      <h2>Making blockchain tangible</h2>
+      <p>Blockchain-based network protection is inherently abstract. The design challenge was to create a visual language that makes decentralized CDN behavior — nodes, routing, attack mitigation — legible and compelling without requiring technical background knowledge.</p>
+    </div>
+
+    <div class="media-full">
+      <video autoplay muted loop playsinline>
+        <source src={`${S3}/ycore_reserve.mp4`} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full video {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+</style>

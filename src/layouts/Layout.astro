@@ -1,0 +1,124 @@
+---
+interface Props {
+  title?: string;
+  dark?: boolean;
+}
+const { title = 'Maxwell Rutman', dark = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Product Design Portfolio of Maxwell Rutman" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href={`${base}/styles/global.css`} />
+  </head>
+  <body class={dark ? 'dark' : 'light'}>
+    <nav>
+      <a href={`${base}/`} class="logo" aria-label="Home">
+        <span class="dot dot--red"></span>
+        <span class="dot dot--yellow"></span>
+        <span class="dot dot--blue"></span>
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href={`${base}/digital-work`} class:list={['nav-link', 'nav-link--red', { active: currentPath.includes('/digital-work') }]}>
+            DIGITAL <span>Work</span>
+          </a>
+        </li>
+        <li>
+          <a href={`${base}/physical-work`} class:list={['nav-link', 'nav-link--yellow', { active: currentPath.includes('/physical-work') }]}>
+            PHYSICAL <span>Work</span>
+          </a>
+        </li>
+        <li>
+          <a href={`${base}/sandbox`} class:list={['nav-link', 'nav-link--blue', { active: currentPath.includes('/sandbox') }]}>
+            SANDBOX
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    background: var(--color-bg-light);
+    color: var(--color-text-dark);
+  }
+
+  body.dark {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+
+  .dot--red    { background: var(--color-red); }
+  .dot--yellow { background: var(--color-yellow); }
+  .dot--blue   { background: var(--color-blue); }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+
+  .nav-link {
+    font-family: var(--font-main);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: opacity 0.2s;
+  }
+
+  .nav-link:hover {
+    opacity: 0.7;
+  }
+
+  .nav-link span {
+    font-weight: 400;
+  }
+
+  .nav-link--red    { color: var(--color-red); }
+  .nav-link--yellow { color: var(--color-yellow); }
+  .nav-link--blue   { color: var(--color-blue); }
+
+  main {
+    min-height: 100vh;
+  }
+</style>

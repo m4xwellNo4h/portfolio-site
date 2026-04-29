@@ -1,0 +1,80 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+---
+
+<ProjectLayout
+  title="Mapping Melodies"
+  subtitle="Arduino × MP3 × Light Sensors"
+  description="An elevator that plays music associated to its vertical path. As the car ascends or descends, light sensors detect floor position and trigger MP3 playback — mapping spatial movement to an evolving musical experience."
+  backHref="/physical-work"
+  backLabel="Physical Work"
+>
+
+  <div class="media-full">
+    <img src={`${CDN}/5e57f5ad5b170c6f7cf0ad9c_IMG_0933.jpg`} alt="Mapping Melodies overview" loading="lazy" />
+  </div>
+
+  <div class="project-body">
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5e5c0a8075d7b25ad52367b1_mapping_1.jpg`} alt="Mapping Melodies device" loading="lazy" />
+      <img src={`${CDN}/5e5c0a8cc9fe84b10e9dce8c_mapping_2.jpg`} alt="Mapping Melodies detail" loading="lazy" />
+    </div>
+
+    <div class="project-section">
+      <h2>Physical construction</h2>
+      <p>The device is constructed from laser-cut wood panels, housing an Arduino microcontroller, MP3 shield, speaker, and a vertical array of light sensors — one per simulated floor. Each sensor triggers a corresponding audio track as the elevator car breaks the beam.</p>
+    </div>
+
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5e5c0d325d49069e3a3b8135_IMG_0602.jpg`} alt="Interior wiring detail" loading="lazy" />
+      <img src={`${CDN}/5e5c0ac463723e4a8caa5167_mapping_con_1.jpg`} alt="Construction detail" loading="lazy" />
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .media-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .media-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+</style>

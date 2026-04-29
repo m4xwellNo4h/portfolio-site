@@ -1,0 +1,75 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+---
+
+<ProjectLayout
+  title="Sole Searching"
+  subtitle="Arduino × MP3 × Light Sensors"
+  description="Reinventing the pedestrian experience with an examination of Hertzian Space. The shoe embeds an Arduino and audio system that responds to walking pace and environment — turning each step into a sonic event."
+  backHref="/physical-work"
+  backLabel="Physical Work"
+>
+
+  <div class="media-full">
+    <img src={`${CDN}/5e5c10e6c9fe849b069df87e_solesearch1.jpg`} alt="Sole Searching wearable" loading="lazy" />
+  </div>
+
+  <div class="project-body">
+    <div class="project-section">
+      <h2>Hertzian Space</h2>
+      <p>Hertzian Space — the invisible electromagnetic field surrounding electronic objects — is present in every step we take. This project makes that invisible layer audible, attaching sensors and a speaker system to footwear to reveal the hidden electromagnetic landscape of the urban environment.</p>
+    </div>
+
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5db5b30c83d31e143e589cbe_wave.png`} alt="Waveform visualization" loading="lazy" />
+      <img src={`${CDN}/5e5c10fe0e1706786183f5b1_circuitSole.jpeg`} alt="Circuit board sole detail" loading="lazy" />
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .media-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .media-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+</style>

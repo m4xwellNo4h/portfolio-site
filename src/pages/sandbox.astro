@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sandbox — Maxwell Rutman">
+  <section class="sandbox">
+    <div class="sandbox__header">
+      <h1 class="sandbox__title">Sandbox</h1>
+      <p class="sandbox__subtitle">All the things</p>
+    </div>
+
+    <div class="sandbox__under-construction">
+      🚧🚧🚧 Under Construction 🚧🚧🚧
+    </div>
+
+    <div class="sandbox__experiment">
+      <p class="sandbox__instruction">Click the square below and press any key, A to Z<br />Turn up your speakers</p>
+      <div class="sandbox__canvas" id="keyCanvas" tabindex="0" aria-label="Press A to Z keys to play sounds"></div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sandbox {
+    padding-top: 80px;
+    min-height: 100vh;
+    background: var(--color-bg-light);
+  }
+
+  .sandbox__header {
+    padding: 40px 8vw 0;
+  }
+
+  .sandbox__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+  }
+
+  .sandbox__subtitle {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 6px;
+  }
+
+  .sandbox__under-construction {
+    padding: 24px 8vw;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sandbox__experiment {
+    padding: 40px 8vw;
+  }
+
+  .sandbox__instruction {
+    font-size: 0.88rem;
+    color: #999;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .sandbox__canvas {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin: 0 auto;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sandbox__canvas:focus {
+    box-shadow: 0 0 0 2px var(--color-blue);
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('keyCanvas');
+  if (canvas) {
+    canvas.addEventListener('keydown', (e) => {
+      const key = e.key.toUpperCase();
+      if (key.length === 1 && key >= 'A' && key <= 'Z') {
+        canvas.style.background = `hsl(${(key.charCodeAt(0) - 65) * 14}, 70%, 20%)`;
+      }
+    });
+    canvas.addEventListener('keyup', () => {
+      canvas.style.background = '#000';
+    });
+  }
+</script>

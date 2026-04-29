@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Mapping Melodies',
+    description: 'A tangible music-mapping device built with laser-cut wood and embedded electronics',
+    client: null,
+    image: 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356/5e5c0a8075d7b25ad52367b1_mapping_1.jpg',
+    href: '/work/mapping-melodies',
+  },
+  {
+    title: 'Sole Searching',
+    description: 'Reinventing the pedestrian experience with an examination of Hertzian Space',
+    client: null,
+    image: 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356/5e5c10e6c9fe849b069df87e_solesearch1.jpg',
+    href: '/work/sole',
+  },
+  {
+    title: 'Yurn',
+    description: 'A locked jar that addresses impulse control through auditory, tactile, and social feedback',
+    client: null,
+    image: 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356/5e57f5cd5b170cf3e0f0adf9_IMG_9585.jpg',
+    href: '/work/yurn',
+  },
+  {
+    title: 'Bikes',
+    description: 'An exploration of bicycle design and fabrication',
+    client: null,
+    image: 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356/5e7b9d005835f1637e93bf17_IMG_3595.jpg',
+    href: '/work/bikes',
+  },
+];
+---
+
+<Layout title="Physical Work — Maxwell Rutman">
+  <section class="physical-grid">
+    {projects.map((project) => (
+      <article class="physical-item">
+        <div class="physical-item__image-wrap">
+          <img src={project.image} alt={project.title} loading="lazy" />
+        </div>
+        <div class="physical-item__text">
+          <a href={project.href} class="project-link">
+            <h2 class="project-title">{project.title}</h2>
+          </a>
+          <p class="project-description">{project.description}</p>
+          {project.client && <p class="project-client">{project.client}</p>}
+        </div>
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .physical-grid {
+    padding-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr));
+  }
+
+  .physical-item {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .physical-item__image-wrap {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #d8d8d8;
+  }
+
+  .physical-item__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .physical-item:hover .physical-item__image-wrap img {
+    transform: scale(1.03);
+  }
+
+  .physical-item__text {
+    padding: 28px 32px 40px;
+  }
+
+  .project-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+  }
+
+  .project-description {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--color-text-dark);
+  }
+
+  .project-client {
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 10px;
+    color: var(--color-text-dark);
+  }
+
+  .project-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-link:hover .project-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>

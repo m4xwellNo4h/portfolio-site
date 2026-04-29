@@ -1,0 +1,78 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+const S3  = 'https://wf1.s3.us-east-2.amazonaws.com';
+---
+
+<ProjectLayout
+  title="Simulating Natural Hazards"
+  subtitle="UC Berkeley + National Science Foundation [2017–2018]"
+  description="The Computational Modeling and Simulation Center (SimCenter) provides next-generation computational modeling and simulation software tools, user support, and educational materials to the natural hazards engineering research community — advancing the nation's capability to simulate the impact of natural hazards on structures, lifelines, and communities."
+  role="Product Designer"
+  team="UC Berkeley + National Science Foundation"
+  duration="February 2017 – January 2018"
+  backHref="/digital-work"
+  backLabel="Digital Work"
+>
+
+  <div class="media-full">
+    <video autoplay muted loop playsinline>
+      <source src={`${S3}/SimVideo2.mp4`} type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="project-body">
+    <div class="project-section">
+      <h2>Defining and designing a research group to advance hazard simulation capability</h2>
+      <p>The SimCenter goal was to remove bottlenecking manual processes and replace fragmented, siloed tools with a unified workspace — enabling civil engineers to model, simulate, and analyze the structural response of buildings under seismic and wind loads.</p>
+    </div>
+
+    <div class="media-full media-full--contained">
+      <img src={`${CDN}/5f5a5d9d3715bc329c371111_mdof_edits.jpg`} alt="MDOF simulation interface" loading="lazy" />
+    </div>
+
+    <div class="project-section">
+      <h2>Integrated workspace</h2>
+      <p>The application combines building property inputs, floor-level configuration, and live system output into a single coherent view — allowing researchers to iterate on models and immediately observe structural displacement results.</p>
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full video,
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .media-full--contained {
+    padding: 0 8vw;
+    margin: 40px 0;
+  }
+
+  .media-full--contained img {
+    border-radius: 4px;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+</style>

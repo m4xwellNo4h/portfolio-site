@@ -1,0 +1,85 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+---
+
+<ProjectLayout
+  title="Bikes"
+  subtitle="Physical Fabrication"
+  description="An exploration of bicycle design and fabrication — combining hand-built frame construction with documentation of the process from raw material to finished object."
+  backHref="/physical-work"
+  backLabel="Physical Work"
+>
+
+  <div class="media-full">
+    <img src={`${CDN}/5e7b9d005835f1637e93bf17_IMG_3595.jpg`} alt="Bike overview" loading="lazy" />
+  </div>
+
+  <div class="project-body">
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5e57ecc876537235440e1dde_image-asset.jpeg`} alt="Bike detail" loading="lazy" />
+      <img src={`${CDN}/5e7b9e10a94d6810814216a8_IMG_0614.jpg`} alt="Bike frame" loading="lazy" />
+    </div>
+
+    <div class="project-section">
+      <h2>Process documentation</h2>
+      <p>The project captures each stage of fabrication — from raw tubing and joint prep through welding, finishing, and final assembly. The documentation is as much a part of the work as the object itself.</p>
+    </div>
+
+    <div class="media-grid media-grid--3">
+      <img src={`${CDN}/5e7b9e27024fd737e34d5251_IMG_0569.jpg`} alt="Fabrication detail 1" loading="lazy" />
+      <img src={`${CDN}/5e7b9e4dd4a2af7bf6568171_IMG_0542.jpg`} alt="Fabrication detail 2" loading="lazy" />
+      <img src={`${CDN}/5e7b9e7a5835f17a8c93ceca_IMG_0605.jpg`} alt="Fabrication detail 3" loading="lazy" />
+    </div>
+
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5e7b9eb3f10c2106e62d25f6_IMG_0781.jpg`} alt="Finished bike 1" loading="lazy" />
+      <img src={`${CDN}/5e7b9e10a94d6810814216a8_IMG_0614.jpg`} alt="Finished bike 2" loading="lazy" />
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .media-grid--2 { grid-template-columns: 1fr 1fr; }
+  .media-grid--3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .media-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+</style>

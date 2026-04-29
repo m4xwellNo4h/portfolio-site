@@ -1,0 +1,63 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const S3 = 'https://wf1.s3.us-east-2.amazonaws.com';
+---
+
+<ProjectLayout
+  title="Augmented Reality Toolkit"
+  subtitle="Siemens R&D + Google X [2017]"
+  description="Hands-free interactive training modules for powerplant engineers. Built on Google Glass, the toolkit allows engineers to access step-by-step maintenance procedures, schematics, and real-time sensor data without ever taking their hands off the equipment."
+  role="Product Designer"
+  team="Siemens R&D + Google X"
+  duration="2017"
+  backHref="/digital-work"
+  backLabel="Digital Work"
+>
+
+  <div class="media-full">
+    <video autoplay muted loop playsinline>
+      <source src={`${S3}/gl_2.mp4`} type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="project-body">
+    <div class="project-section">
+      <h2>Hands-free access to critical information</h2>
+      <p>Powerplant engineers require constant access to technical documentation while performing maintenance — a task made impossible when both hands are needed. The AR toolkit surfaces relevant procedures, diagrams, and sensor readings directly in the engineer's field of view via Google Glass.</p>
+    </div>
+
+    <div class="project-section">
+      <h2>Interaction model</h2>
+      <p>The interface was designed around the constraints of a small heads-up display and voice + gesture input. Navigation is minimal, content is contextual, and the system adapts to the engineer's current task and location within the facility.</p>
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full video {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+</style>

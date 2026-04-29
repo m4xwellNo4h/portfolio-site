@@ -1,0 +1,115 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  role?: string;
+  team?: string;
+  duration?: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, subtitle, description, role, team, duration, backHref, backLabel } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title={`${title} — Maxwell Rutman`}>
+  <article class="project">
+    <header class="project__header">
+      <a href={`${base}${backHref}`} class="project__back">← {backLabel}</a>
+      <div class="project__meta">
+        {subtitle && <p class="project__subtitle">{subtitle}</p>}
+        <h1 class="project__title">{title}</h1>
+        <p class="project__description">{description}</p>
+        {(role || team || duration) && (
+          <div class="project__credits">
+            {role     && <div class="credit"><span class="credit__label">ROLE</span><span>{role}</span></div>}
+            {team     && <div class="credit"><span class="credit__label">TEAM</span><span>{team}</span></div>}
+            {duration && <div class="credit"><span class="credit__label">DURATION</span><span>{duration}</span></div>}
+          </div>
+        )}
+      </div>
+    </header>
+
+    <slot />
+  </article>
+</Layout>
+
+<style>
+  .project {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .project__header {
+    padding: 48px 8vw 56px;
+    max-width: 720px;
+  }
+
+  .project__back {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-text-dark);
+    opacity: 0.45;
+    margin-bottom: 32px;
+    transition: opacity 0.2s;
+  }
+
+  .project__back:hover { opacity: 1; }
+
+  .project__subtitle {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-text-dark);
+    opacity: 0.45;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .project__title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .project__description {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 32px;
+  }
+
+  .project__credits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+    padding-top: 24px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .credit {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .credit__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #999;
+  }
+
+  .credit span:not(.credit__label) {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+  }
+</style>

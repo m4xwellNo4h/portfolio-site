@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Restoring Trust In The Federal Space',
+    description: 'A Digital Command Center That Transforms The Collection And Visualization Of Data',
+    client: 'Guidehouse + The Joint Program Office [2020]',
+    video: 'https://wf1.s3.us-east-2.amazonaws.com/tablet_animation_standard_white.mp4',
+    image: null,
+    href: '/work/jpo',
+  },
+  {
+    title: 'Reserving Technology For The Classroom',
+    description: 'Device Reservation For Teachers And Analytics For Improved Device Distribution Across Schools',
+    client: null,
+    video: null,
+    image: 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356/5eb1b1f1ec7075435b156a7e_Screen%20Shot%202020-05-05%20at%202.34.54%20PM.png',
+    href: '/work/berkeley-3',
+  },
+  {
+    title: 'Simulating Natural Hazards',
+    description: 'Design And Development Of An Integrated Workspace For Simulating Civil Engineering Concepts',
+    client: 'UC Berkeley + National Science Foundation [2017-2018]',
+    video: 'https://wf1.s3.us-east-2.amazonaws.com/SimThumb1.mp4',
+    image: null,
+    href: '/work/berkeley-3',
+  },
+  {
+    title: 'Augmented Reality Toolkit',
+    description: 'Hands Free Interactive Training Modules For Powerplant Engineers',
+    client: 'Siemens R&D + Google X [2017]',
+    video: 'https://wf1.s3.us-east-2.amazonaws.com/gl_2.mp4',
+    image: null,
+    href: '/work/glass-2',
+  },
+  {
+    title: 'Illustrating Cybersecurity',
+    description: 'Demonstrating Decentralized CDN And DDoS Protection On The Ethereum Blockchain',
+    client: 'Gladius Cybersecurity [2019]',
+    video: 'https://wf1.s3.us-east-2.amazonaws.com/ycore_mobile_search.mp4',
+    image: null,
+    href: '/work/ycore-2',
+  },
+];
+---
+
+<Layout title="Digital Work — Maxwell Rutman">
+  <section class="work-grid">
+    {projects.map((project, i) => (
+      <article class:list={['project-item', i % 2 === 0 ? 'project-item--left' : 'project-item--right']}>
+        <div class="project-item__text">
+          <a href={project.href} class="project-link">
+            <h2 class="project-title">{project.title}</h2>
+          </a>
+          <p class="project-description">{project.description}</p>
+          {project.client && <p class="project-client">{project.client}</p>}
+        </div>
+        {(project.video || project.image) && (
+          <div class="project-item__media">
+            {project.video
+              ? <video autoplay muted loop playsinline>
+                  <source src={project.video} type="video/mp4" />
+                </video>
+              : <img src={project.image!} alt={project.title} loading="lazy" />
+            }
+          </div>
+        )}
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .work-grid {
+    padding-top: 80px;
+  }
+
+  .project-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 420px;
+    align-items: center;
+  }
+
+  .project-item--left .project-item__text {
+    grid-column: 1;
+    padding: 60px 8vw 60px 8vw;
+  }
+
+  .project-item--left .project-item__media {
+    grid-column: 2;
+  }
+
+  .project-item--right .project-item__text {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 60px 8vw 60px 40px;
+  }
+
+  .project-item--right .project-item__media {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .project-item__media video,
+  .project-item__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .project-title {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    color: var(--color-text-dark);
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--color-text-dark);
+    margin-bottom: 16px;
+  }
+
+  .project-client {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--color-text-dark);
+  }
+
+  .project-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-link:hover .project-title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>

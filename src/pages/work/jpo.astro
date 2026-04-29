@@ -1,0 +1,130 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+const S3  = 'https://wf1.s3.us-east-2.amazonaws.com';
+---
+
+<ProjectLayout
+  title="Restoring Trust In The Federal Space"
+  subtitle="Guidehouse + The Joint Program Office [2020]"
+  description="A reimagining of how the most advanced and complex federal system handles data. The Joint Program Office (JPO) is the Department of Defense's focal point for all things F-35 — handling logistics for procurement, finance, and sustainment for all jets across thousands of manual processes and terabytes of siloed data."
+  role="Product Designer + Strategist"
+  team="Guidehouse Public Sector Digital"
+  duration="August 2018 – Present"
+  backHref="/digital-work"
+  backLabel="Digital Work"
+>
+
+  <!-- Hero video -->
+  <div class="media-full">
+    <video autoplay muted loop playsinline>
+      <source src={`${S3}/tablet_animation_standard_ms_backup.mp4`} type="video/mp4" />
+    </video>
+  </div>
+
+  <div class="project-body">
+    <blockquote>"The first application to move the JPO from paper reporting to a digital environment"</blockquote>
+
+    <!-- 2-col: image + video -->
+    <div class="media-grid media-grid--2">
+      <img src={`${CDN}/5f49809594e3aadb604a1d9e_Screen%20Shot%202020-08-28%20at%206.08.57%20PM.png`} alt="JPO dashboard screenshot" loading="lazy" />
+      <img src={`${CDN}/5f498360db3131fa559d184a_fanWhite.jpg`} alt="JPO fan diagram" loading="lazy" />
+    </div>
+
+    <div class="project-section">
+      <h2>Hierarchy of Information</h2>
+      <p>Application views are aligned with user groups. Users pay attention to the metrics relevant to their role — from macro system overviews down to granular details on individual planes and parts.</p>
+    </div>
+
+    <div class="media-full media-full--contained">
+      <img src={`${CDN}/5edaa4bbb414c77b9da1f614_hierarchy_low.jpg`} alt="Hierarchy diagram" loading="lazy" />
+    </div>
+
+    <div class="media-grid media-grid--2">
+      <video autoplay muted loop playsinline>
+        <source src={`${S3}/bah_jpo.mp4`} type="video/mp4" />
+      </video>
+      <video autoplay muted loop playsinline>
+        <source src={`${S3}/tablet_animation_Production.mp4`} type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="media-full media-full--contained">
+      <img src={`${CDN}/5ecaec0b4966c2075460cbda_multi_white.jpg`} alt="Multi-view layout" loading="lazy" />
+    </div>
+
+    <div class="media-full">
+      <video autoplay muted loop playsinline>
+        <source src={`${S3}/tablet_animation_forecasting.mp4`} type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full video,
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .media-full--contained {
+    padding: 0 8vw;
+    margin: 40px 0;
+  }
+
+  .media-full--contained img {
+    border-radius: 4px;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  blockquote {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: #555;
+    padding: 48px 8vw;
+    border-left: 3px solid var(--color-red);
+    margin: 40px 8vw;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .media-grid--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .media-grid video,
+  .media-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 10;
+  }
+</style>

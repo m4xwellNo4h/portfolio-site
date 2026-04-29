@@ -1,0 +1,76 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+
+const CDN = 'https://cdn.prod.website-files.com/5da73992c8fdbee7ba41d356';
+---
+
+<ProjectLayout
+  title="Yurn"
+  subtitle="Arduino"
+  description="A locked jar that addresses impulse control through auditory, tactile, and social feedback. Yurn is a behavioral intervention device — the jar physically locks and uses multi-sensory cues to help users pause before acting on impulses."
+  backHref="/physical-work"
+  backLabel="Physical Work"
+>
+
+  <div class="media-full">
+    <img src={`${CDN}/5e57f5cd5b170cf3e0f0adf9_IMG_9585.jpg`} alt="Yurn device" loading="lazy" />
+  </div>
+
+  <div class="project-body">
+    <div class="project-section">
+      <h2>Behavioral intervention through design</h2>
+      <p>Impulse control is one of the most difficult behavioral challenges to address through technology. Yurn uses a physical locking mechanism combined with vibration, sound, and a social sharing component to create a moment of pause — interrupting the impulse loop before action occurs.</p>
+    </div>
+
+    <div class="media-grid media-grid--3">
+      <img src={`${CDN}/5e57f7a1f414e96def21f186_IMG_9697.jpg`} alt="Yurn detail 1" loading="lazy" />
+      <img src={`${CDN}/5e57f60a45dfdc29d3bd22cf_IMG_9665.jpg`} alt="Yurn detail 2" loading="lazy" />
+      <img src={`${CDN}/5e59a04fc2564301d7ac4027_IMG_9621.jpg`} alt="Yurn detail 3" loading="lazy" />
+    </div>
+  </div>
+</ProjectLayout>
+
+<style>
+  .media-full img {
+    width: 100%;
+    display: block;
+  }
+
+  .project-body {
+    padding: 0 0 60px;
+  }
+
+  .project-section {
+    padding: 40px 8vw;
+    max-width: 760px;
+  }
+
+  .project-section h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .project-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .media-grid {
+    display: grid;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .media-grid--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .media-grid img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 1;
+  }
+</style>
