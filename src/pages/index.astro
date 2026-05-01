@@ -76,8 +76,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration: none;
     /* background-image is set each frame by the JS animation loop */
   }
 
@@ -112,8 +111,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     link.style.backgroundImage =
       `linear-gradient(90deg, hsl(${h1},90%,70%), hsl(${h2},90%,70%))`;
 
-    // Keep the underline tint in sync with the leading gradient stop
-    link.style.textDecorationColor = `hsl(${h1},90%,70%)`;
 
     // requestAnimationFrame: runs at the display's refresh rate (usually
     // 60fps), automatically pauses when the tab is hidden (good for battery),
