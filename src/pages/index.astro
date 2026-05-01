@@ -9,7 +9,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <h1 class="hero__name">Maxwell Rutman</h1>
       <p class="hero__subtitle">TRANSDISCIPLINARY DESIGN</p>
       <p class="hero__tagline">
-        Future-friendly form, fantasy, and <a href="https://www.youtube.com/watch?v=huzYji2OAD4" class="tagline-link" target="_blank" rel="noopener noreferrer">funktion</a>
+        Future-friendly form, fantasy, and <a href="https://www.youtube.com/watch?v=huzYji2OAD4" class="tagline-link" id="funktion-link" target="_blank" rel="noopener noreferrer">funktion</a>
       </p>
     </div>
 
@@ -72,14 +72,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .tagline-link {
-    color: rgba(255, 255, 255, 0.6);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .tagline-link:hover {
-    color: var(--color-white);
-    border-color: var(--color-white);
+    /* text-fill transparent lets the animated background show through the letterforms */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    /* background-image is set each frame by the JS animation loop */
   }
 
   .hero__graphic {
@@ -92,3 +91,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     height: auto;
   }
 </style>
+
+<script>
+  const link = document.getElementById('funktion-link') as HTMLElement;
+
+  // Current hue — starts at 0° (red) and wraps at 360°
+  let hue = 0;
+
+  function animate() {
+    // Advance 0.6° per frame → ~36°/sec at 60fps: slow, smooth, readable
+    hue = (hue + 0.6) % 360;
+
+    // Build two gradient stops offset by 80° so the word always spans
+    // two neighbouring rainbow hues (e.g. red→orange, blue→purple).
+    // Setting backgroundImage directly each frame is the most reliable
+    // cross-browser way to animate a gradient — CSS custom properties
+    // inside hsl() aren't consistently supported in gradients yet.
+    const h1 = hue;
+    const h2 = (hue + 80) % 360;
+    link.style.backgroundImage =
+      `linear-gradient(90deg, hsl(${h1},90%,70%), hsl(${h2},90%,70%))`;
+
+    // Keep the underline tint in sync with the leading gradient stop
+    link.style.textDecorationColor = `hsl(${h1},90%,70%)`;
+
+    // requestAnimationFrame: runs at the display's refresh rate (usually
+    // 60fps), automatically pauses when the tab is hidden (good for battery),
+    // and is frame-synced so there's no tearing or stuttering.
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
