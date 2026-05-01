@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Maxwell Rutman" dark={true}>
@@ -13,7 +12,56 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </p>
     </div>
 
-    <div class="hero__graphic" id="lottie-container" aria-hidden="true"></div>
+    <!-- Concentric-circles graphic — rebuilt as native SVG so it works everywhere -->
+    <!-- Data extracted from the original Lottie JSON (900×645 canvas, 7 s loop) -->
+    <div class="hero__graphic" aria-hidden="true">
+      <svg viewBox="0 0 900 645" xmlns="http://www.w3.org/2000/svg">
+        <!--
+          Six solid circles stacked back-to-front.
+          Because each circle is fully opaque and smaller than the one behind,
+          only the outer *ring* of each colour shows through — creating the
+          concentric-ring look without needing clip-paths or stroke math.
+        -->
+        <circle cx="452" cy="336.5" r="421"   fill="#808080"/>
+        <circle cx="452" cy="336.5" r="363.5" fill="#535353"/>
+        <circle cx="452" cy="336.5" r="310"   fill="#393939"/>
+        <circle cx="452" cy="336.5" r="245.5" fill="#242424"/>
+        <circle cx="452" cy="336.5" r="183.5" fill="#131313"/>
+        <circle cx="452" cy="336.5" r="114"   fill="#0a0a0a"/>
+
+        <!--
+          Two visible floating dots (dot 3 & dot 6 from the Lottie layers).
+          Keyframe positions are taken directly from the JSON position data.
+          calcMode="spline" + keySplines reproduce the ease-in/ease-out bezier
+          that the original animation uses.
+        -->
+        <circle r="7" fill="#d1d1d1">
+          <animate attributeName="cx"
+            values="316.5;144;316.5"
+            dur="7s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0;0.5;1"
+            keySplines="0.448 0.004 0.467 1;0.467 0 0.457 0.995"/>
+          <animate attributeName="cy"
+            values="433.5;481.5;433.5"
+            dur="7s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0;0.5;1"
+            keySplines="0.448 0.004 0.467 1;0.467 0 0.457 0.995"/>
+        </circle>
+
+        <circle r="6" fill="#f5f5f5">
+          <animate attributeName="cx"
+            values="773.5;475;773.5"
+            dur="7s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0;0.5;1"
+            keySplines="0.448 0.004 0.467 1;0.467 0 0.457 0.995"/>
+          <animate attributeName="cy"
+            values="322.5;351.5;322.5"
+            dur="7s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0;0.5;1"
+            keySplines="0.448 0.004 0.467 1;0.467 0 0.457 0.995"/>
+        </circle>
+      </svg>
+    </div>
   </section>
 </Layout>
 
@@ -75,24 +123,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     height: auto;
   }
 
-  #lottie-container svg {
+  .hero__graphic svg {
     display: block;
+    overflow: visible;
   }
 </style>
-
-<script>
-  import lottie from 'lottie-web';
-
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-  lottie.loadAnimation({
-    container: document.getElementById('lottie-container')!,
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: `${base}/animations/circles.json`,
-  });
-</script>
 
 <script>
   const link = document.getElementById('funktion-link') as HTMLElement;
